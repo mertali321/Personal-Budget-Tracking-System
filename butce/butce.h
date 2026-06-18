@@ -1,7 +1,15 @@
 #pragma
 #include <vector>
 using namespace std;
+class butce
+{
+private:
+     vector<float> gnkKayit; string kullanici;
+public:
 
-float getiri(const vector<float> &getirikayit,const float kar);
-float goturu(const vector<float> &goturukayit,const float zarar);
-float gunluk(vector<float> &gunlukHrc);
+
+    float getiri(float kar);
+    float goturu(float zarar);
+    float gunluk(vector<float> &gunlukHrc);
+
+};
