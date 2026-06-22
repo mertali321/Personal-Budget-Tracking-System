@@ -1,15 +1,19 @@
-#pragma
+#pragma once
 #include <vector>
-using namespace std;
-class butce
-{
+#include <string>
+
+class butce {
 private:
-     vector<float> gnkKayit; string kullanici;
+    std::vector<float> gnkKayit;
+    std::vector<float> haftalik_Kyt; // .cpp'de kullandığın için buraya ekledik
+    std::string kullanici;
+
 public:
+    // Constructor (Yapıcı Fonksiyon)
+    butce(std::string isim);
 
-
-    float getiri(float kar);
+    // Geri dönüş tipleri float olduğu için return değerleri ekleyeceğiz
+    float getiri(const float kar);
     float goturu(float zarar);
-    float gunluk(vector<float> &gunlukHrc);
-
+    float gunluk(); 
 };

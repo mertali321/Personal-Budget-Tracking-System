@@ -1,75 +1,60 @@
-#pragma once
 #include "butce.h"
-#include <vector>
 #include <iostream>
+
 using namespace std;
 
-class butce
-{
-private:
-      //degerler
-     vector<float> gnkKayit,haftalik_Kyt; string kullanici; 
-public:
-    //kullanici isim parametresi
-    butce(string kullanici){
-        this->kullanici = kullanici;
-    }
-
-  //kar kayit
-  float getiri(const float kar){
-
-  gnkKayit.push_back(kar);
-    
+butce::butce(string isim) {
+    kullanici = isim;
 }
 
-//goturu kayit
-float goturu(float zarar){
-
-
-    if (zarar>0)
-    {
-        zarar = -1*zarar;
-    }
-    
-  gnkKayit.push_back(zarar);
-
+// Kar kayıt
+float butce::getiri(const float kar) {
+    gnkKayit.push_back(kar);
+    return kar; 
 }
-//gunluk gelir gider yazdirma
-float gunluk(){
-float toplam =0;
-int boyut = gnkKayit.size();
-  cout << "gunluk kayitlar ";
-for (int i = 0; i <boyut; i++)
-{
-    toplam = gnkKayit[i]+toplam;
-    if (i==boyut-1)
-    {
-        cout << gnkKayit[i]<< endl; 
+
+// Götürü kayıt
+float butce::goturu(float zarar) {
+    if (zarar > 0) {
+        zarar = -1 * zarar;
+    }
+    gnkKayit.push_back(zarar);
+    return zarar;
+}
+
+float butce::gunluk() {
+    float toplam = 0;
+    int boyut = gnkKayit.size();
+    
+    if (boyut == 0) {
+        cout << kullanici << " icin henüz kayit girilmemis." << endl;
+        return 0;
+    }
+else{
+
+    cout << kullanici << " gunluk kayitlar: ";
+    for (int i = 0; i < boyut; i++) {
+        toplam += gnkKayit[i];
         
-       if (toplam>0)
-       {
-          cout << "Tebrikler, bu gun kasana: " << toplam << " kadar bakiye girdi" << endl;
-       }
-       else if (toplam < 0)
-       {
-          cout << "bu gun kasadan: " << toplam << " kadar zarardasin" << endl;
-       }
-       else{
-               cout << "Mukemmel bir denge sağlamis gelir ve gider esit" << endl; 
-       }
+        if (i == boyut - 1) {
+            cout << gnkKayit[i] << endl; 
+            
+            if (toplam > 0) {
+                cout << "Tebrikler, bugun kasana: " << toplam << " kadar bakiye girdi" << endl;
+            } 
+            else if (toplam < 0) {
+                // Zararı pozitif gösterip "zarardasın" demek daha mantıklı, eksi ile çarptık
+                cout << "Bugun kasadan: " << -toplam << " kadar zarardasin" << endl;
+            } 
+            else {
+                cout << "Mukemmel bir denge saglanmis, gelir ve gider esit" << endl; 
+            }
+        } 
+        else {
+            cout << gnkKayit[i] << " || ";
+        }
     }
-    else{
-       
-     cout << gnkKayit[i] << " || ";
-    }
-  
+
+  }  
+    return toplam;
 }
-
-
-}
-
-
-};
-
-
-
