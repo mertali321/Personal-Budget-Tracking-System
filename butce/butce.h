@@ -2,15 +2,17 @@
 #include <vector>
 #include <string>
 
+
+
 class butce {
 private:
     std::vector<float> gnkKayit;
     std::vector<float> haftalik_Kyt; // .cpp'de kullandığın için buraya ekledik
     std::string kullanici;
-
+    int id;
 public:
     // Constructor (Yapıcı Fonksiyon)
-    butce(std::string isim);
+    butce(std::string isim,int id);
 
     // Geri dönüş tipleri float olduğu için return değerleri ekleyeceğiz
     float getiri(const float kar);
@@ -18,4 +20,5 @@ public:
     float gunluk(); 
     void sil(int silinicek);
     void yazdir();
+    void dosya_Kayit();
 };

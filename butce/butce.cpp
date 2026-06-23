@@ -3,8 +3,9 @@
 #include <sstream>
 using namespace std;
 
-butce::butce(string isim) {
+butce::butce(string isim,int id) {
     kullanici = isim;
+    this->id = id;
 }
 
 // Kar kayıt
@@ -75,15 +76,7 @@ void butce::yazdir() {
         return;
     }
 
-    // 1. DÖNGÜ: Elemanları Yazdırma
-    for (int i = 0; i < gnkKayit.size(); i++) {
-        cout << " || " << gnkKayit[i];
-        if (i == gnkKayit.size() - 1) {
-            cout << " ||" << endl;
-        }
-    }
-    
-    for (int i = 0; i < gnkKayit.size(); i++) {
+ for (int i = 0; i < gnkKayit.size(); i++) {
        
         stringstream ss;
         ss << gnkKayit[i];
@@ -105,6 +98,20 @@ void butce::yazdir() {
             cout << " ||" << endl;
         }
     }
+
+    // 1. DÖNGÜ: Elemanları Yazdırma
+    for (int i = 0; i < gnkKayit.size(); i++) {
+        cout << " || " << gnkKayit[i];
+        if (i == gnkKayit.size() - 1) {
+            cout << " ||" << endl;
+        }
+    }
+    
+   
+}
+
+void butce::dosya_Kayit(){
+    
 }
 
 /*int main(){
