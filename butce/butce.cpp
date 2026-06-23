@@ -1,6 +1,6 @@
 #include "butce.h"
 #include <iostream>
-
+#include <sstream>
 using namespace std;
 
 butce::butce(string isim) {
@@ -19,7 +19,7 @@ float butce::goturu(float zarar) {
         zarar = -1 * zarar;
     }
     gnkKayit.push_back(zarar);
-    return zarar;
+    return 0;
 }
 
 float butce::gunluk() {
@@ -54,7 +54,67 @@ else{
             cout << gnkKayit[i] << " || ";
         }
     }
-
+    
   }  
-    return toplam;
+    return 0;
 }
+
+void butce::sil(int secimInt) {
+    if (secimInt >= 1 && secimInt <= gnkKayit.size()) {
+        gnkKayit.erase(gnkKayit.begin() + (secimInt - 1));
+        cout << secimInt << " numarali kayit basariyla silindi." << endl;
+    } 
+    else {
+        cout << "Gecersiz bir sira numarasi girdiniz!" << endl;
+    }
+}
+
+void butce::yazdir() {
+    if (gnkKayit.empty()) {
+        cout << kullanici << " icin gosterilecek herhangi bir kayit bulunmamamaktadir." << endl;
+        return;
+    }
+
+    // 1. DÖNGÜ: Elemanları Yazdırma
+    for (int i = 0; i < gnkKayit.size(); i++) {
+        cout << " || " << gnkKayit[i];
+        if (i == gnkKayit.size() - 1) {
+            cout << " ||" << endl;
+        }
+    }
+    
+    for (int i = 0; i < gnkKayit.size(); i++) {
+       
+        stringstream ss;
+        ss << gnkKayit[i];
+        string yazi = ss.str();
+        string indeksYazi = to_string(i + 1); 
+      
+        int toplamBosluk = yazi.length() - indeksYazi.length();
+        if (toplamBosluk < 0) toplamBosluk = 0; 
+        
+        int solBosluk = toplamBosluk / 2;
+        int sagBosluk = toplamBosluk - solBosluk;
+
+        cout << " || ";
+        for (int j = 0; j < solBosluk; j++) { cout << " "; }
+        cout << (i + 1); 
+        for (int j = 0; j < sagBosluk; j++) { cout << " "; }
+
+        if (i == gnkKayit.size() - 1) {
+            cout << " ||" << endl;
+        }
+    }
+}
+
+/*int main(){
+
+butce ahmet("Ahmet");
+
+ahmet.getiri(50000);
+ahmet.goturu(40000);
+ahmet.yazdir();
+
+
+}
+*/

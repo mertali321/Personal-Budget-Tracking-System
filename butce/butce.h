@@ -16,4 +16,6 @@ public:
     float getiri(const float kar);
     float goturu(float zarar);
     float gunluk(); 
+    void sil(int silinicek);
+    void yazdir();
 };
